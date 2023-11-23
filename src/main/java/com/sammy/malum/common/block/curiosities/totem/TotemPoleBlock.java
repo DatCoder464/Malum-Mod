@@ -58,6 +58,6 @@ public class TotemPoleBlock<T extends TotemPoleBlockEntity> extends LodestoneEnt
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(HORIZONTAL_FACING, SpiritTypeRegistry.SPIRIT_TYPE_PROPERTY);
+//        builder.add(HORIZONTAL_FACING, SpiritTypeRegistry.SPIRIT_TYPE_PROPERTY);
     }
 }

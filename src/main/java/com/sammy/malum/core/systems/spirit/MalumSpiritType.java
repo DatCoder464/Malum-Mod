@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.*;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.helpers.*;
 import team.lodestar.lodestone.systems.easing.*;
@@ -27,13 +26,13 @@ import java.awt.*;
 import java.util.function.*;
 
 import static com.sammy.malum.MalumMod.MALUM;
-import static com.sammy.malum.registry.MalumRegistries.SPIRITS;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.AERIAL_SPIRIT;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.SACRED_SPIRIT;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.SPIRITS;
 
 
 public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
 
-    public static SpiritTypeBuilder create(String identifier, Supplier<SpiritShardItem> spiritShard, Supplier<SpiritMoteBlock> spiritMote) {
+    public static SpiritTypeBuilder create(Supplier<SpiritShardItem> spiritShard, Supplier<SpiritMoteBlock> spiritMote) {
         return new SpiritTypeBuilder(spiritShard, spiritMote);
     }
 
@@ -103,7 +102,7 @@ public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
     public Rarity getItemRarity() {
         if (itemRarity == null) {
             TextColor textColor = TextColor.fromRgb(ColorHelper.brighter(primaryColor, 1, 0.85f).getRGB());
-            itemRarity = Rarity.create("malum$" + MalumRegistries.MalumKeys.SPIRITS, (style) -> style.withColor(textColor));
+            itemRarity = Rarity.create("malum$" + spiritShard.get().type.getRegistryName().getPath(), (style) -> style.withColor(textColor));
         }
         return itemRarity;
     }
@@ -116,7 +115,7 @@ public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
     }
 
     public String getSpiritFlavourText() {
-        return "malum.spirit.flavour." + MalumRegistries.MalumKeys.SPIRITS;
+        return "malum.spirit.flavour." + spiritShard.get().type.getRegistryName().getPath();
     }
 
     public Component getSpiritJarCounterComponent(int count) {
@@ -124,42 +123,28 @@ public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
     }
 
     public String getSpiritDescription() {
-        return "malum.spirit.description." + MalumRegistries.MalumKeys.SPIRITS;
+        return "malum.spirit.description." + spiritShard.get().type.getRegistryName().getPath();
     }
 
     public ResourceLocation getTotemGlowTexture() {
-        return MalumMod.malumPath("textures/vfx/totem_poles/" + SpiritTypeRegistry.SPIRITS.getRegistryName().getPath() + "_glow.png");
+        return MalumMod.malumPath("textures/vfx/totem_poles/" + spiritShard.get().type.getRegistryName().getPath() + "_glow.png");
     }
 
     public BlockState getTotemPoleBlockState(boolean isCorrupt, BlockHitResult hit) {
         Block base = isCorrupt ? BlockRegistry.SOULWOOD_TOTEM_POLE.get() : BlockRegistry.RUNEWOOD_TOTEM_POLE.get();
-        return base.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, hit.getDirection()).setValue(SpiritTypeRegistry.SPIRIT_TYPE_PROPERTY, MalumRegistries.MalumKeys.SPIRITS.toString());
+        return base.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, hit.getDirection()).setValue(SpiritTypeRegistry.SPIRIT_TYPE_PROPERTY, spiritShard.get().type.getRegistryName().getPath());
     }
 
     @Override
     public MalumSpiritType setRegistryName(ResourceLocation name) {
-        return SPIRITS.getValue(name);
+        return SACRED_SPIRIT.get();
     }
 
     @Nullable
     public ResourceLocation getRegistryName() {
-        String key;
-        if(AERIAL_SPIRIT.getId().getPath().equals("e")) {
-
-        }
-        if(SPIRITS.containsKey(MalumRegistries.MalumKeys.SPIRITS.registry())) {
-            key = SPIRITS.getKey(spiritShard.get().type).getPath();
-        } else {
-            key = SPIRITS.getDefaultKey().getPath();
-
-        }
-
-        return new ResourceLocation(MALUM, key);
+        return spiritShard.get().getRegistryName();
     }
 
-    public String getName() {
-        return MalumRegistries.MalumKeys.SPIRITS.getRegistryName().getPath();
-    }
 
     @Override
     public Class<MalumSpiritType> getRegistryType() {
