@@ -121,7 +121,7 @@ public class TotemPoleBlockEntity extends LodestoneBlockEntity {
     @Override
     protected void saveAdditional(CompoundTag compound) {
         if (type != null) {
-            compound.putString("type", type.getRegistryName().getNamespace());
+            compound.putString("type", type.getRegistryName().getPath());
         }
         if (desiredColor != 0) {
             compound.putInt("desiredColor", desiredColor);

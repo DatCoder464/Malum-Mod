@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.*;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 import team.lodestar.lodestone.helpers.*;
 import team.lodestar.lodestone.systems.easing.*;
@@ -24,6 +25,11 @@ import team.lodestar.lodestone.systems.particle.data.color.*;
 
 import java.awt.*;
 import java.util.function.*;
+
+import static com.sammy.malum.MalumMod.MALUM;
+import static com.sammy.malum.registry.MalumRegistries.SPIRITS;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.AERIAL_SPIRIT;
+
 
 public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
 
@@ -122,7 +128,7 @@ public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
     }
 
     public ResourceLocation getTotemGlowTexture() {
-        return MalumMod.malumPath("textures/vfx/totem_poles/" + MalumRegistries.MalumKeys.SPIRITS + "_glow.png");
+        return MalumMod.malumPath("textures/vfx/totem_poles/" + SpiritTypeRegistry.SPIRITS.getRegistryName().getPath() + "_glow.png");
     }
 
     public BlockState getTotemPoleBlockState(boolean isCorrupt, BlockHitResult hit) {
@@ -132,17 +138,31 @@ public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
 
     @Override
     public MalumSpiritType setRegistryName(ResourceLocation name) {
-        return null;
+        return SPIRITS.getValue(name);
     }
 
     @Nullable
-    @Override
     public ResourceLocation getRegistryName() {
-        return null;
+        String key;
+        if(AERIAL_SPIRIT.getId().getPath().equals("e")) {
+
+        }
+        if(SPIRITS.containsKey(MalumRegistries.MalumKeys.SPIRITS.registry())) {
+            key = SPIRITS.getKey(spiritShard.get().type).getPath();
+        } else {
+            key = SPIRITS.getDefaultKey().getPath();
+
+        }
+
+        return new ResourceLocation(MALUM, key);
+    }
+
+    public String getName() {
+        return MalumRegistries.MalumKeys.SPIRITS.getRegistryName().getPath();
     }
 
     @Override
     public Class<MalumSpiritType> getRegistryType() {
-        return null;
+        return MalumSpiritType.class;
     }
 }

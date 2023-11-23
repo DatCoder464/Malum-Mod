@@ -8,6 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryManager;
 
+import static com.sammy.malum.MalumMod.MALUM;
+
 public class MalumRegistries {
 
     static { init(); }
@@ -20,7 +22,7 @@ public class MalumRegistries {
 
         private static <T> ResourceKey<Registry<T>> key(String name)
         {
-            return ResourceKey.createRegistryKey(new ResourceLocation(name));
+            return ResourceKey.createRegistryKey(new ResourceLocation(MALUM, name));
         }
         private static void init() {}
 
@@ -28,6 +30,6 @@ public class MalumRegistries {
 
     private static void init()
     {
-        MalumRegistries.MalumKeys.init();
+        MalumKeys.init();
     }
 }

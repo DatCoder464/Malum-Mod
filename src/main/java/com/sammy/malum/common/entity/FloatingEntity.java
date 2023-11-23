@@ -96,7 +96,7 @@ public abstract class FloatingEntity extends Entity {
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
         if (DATA_SPIRIT.equals(pKey)) {
-            spiritType = MalumRegistries.SPIRITS.getValue(MalumRegistries.MalumKeys.SPIRITS.getRegistryName());
+            spiritType = SpiritTypeRegistry.get(entityData.get(DATA_SPIRIT));
         }
         super.onSyncedDataUpdated(pKey);
     }

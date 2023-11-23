@@ -29,10 +29,9 @@ public class MalumBlockStateSmithTypes {
         ResourceLocation top = provider.getBlockTexture(woodName + "_log_top");
         provider.getVariantBuilder(block).forAllStates(s -> {
             String type = s.getValue(SpiritTypeRegistry.SPIRIT_TYPE_PROPERTY);
-            MalumSpiritType spiritType = MalumRegistries.SPIRITS.getValue(MalumRegistries.SPIRITS.getRegistryName());
-            assert spiritType != null;
-            ResourceLocation front = provider.modLoc("block/totem_poles/" + Objects.requireNonNull(spiritType.getRegistryName()).getNamespace() + "_" + woodName + "_cutout");
-            ModelFile pole = provider.models().withExistingParent(name + "_" + spiritType.getRegistryName().getNamespace(), parent)
+            MalumSpiritType spiritType = SpiritTypeRegistry.get(type);
+            ResourceLocation front = provider.modLoc("block/totem_poles/" + spiritType.getRegistryName().getPath() + "_" + woodName + "_cutout");
+            ModelFile pole = provider.models().withExistingParent(name + "_" + spiritType.getRegistryName().getPath(), parent)
                     .texture("side", side)
                     .texture("top", top)
                     .texture("front", front);

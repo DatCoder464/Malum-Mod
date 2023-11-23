@@ -188,7 +188,7 @@ public class SpiritJarBlockEntity extends LodestoneBlockEntity {
                     ItemStack spiritStack = inventory.getItem(i);
                     if (spiritStack.getItem() instanceof SpiritShardItem spiritItem) {
                         MalumSpiritType type = spiritItem.type;
-                        if (Objects.requireNonNull(Objects.requireNonNull(MalumRegistries.SPIRITS.getValue(MalumRegistries.MalumKeys.SPIRITS.getRegistryName())).getRegistryName()).getNamespace().equals(Objects.requireNonNull(this.type.getRegistryName()).getNamespace())) {
+                        if (type.getRegistryName().getPath().equals(this.type.getRegistryName().getPath())) {
                             inventory.setItem(i, ItemStack.EMPTY);
                             inserted += spiritStack.getCount();
                             count += spiritStack.getCount();
@@ -220,7 +220,7 @@ public class SpiritJarBlockEntity extends LodestoneBlockEntity {
     @Override
     protected void saveAdditional(CompoundTag compound) {
         if (type != null) {
-            compound.putString("spirit", MalumRegistries.SPIRITS.getValue(MalumRegistries.MalumKeys.SPIRITS.getRegistryName()).toString());
+            compound.putString("spirit", type.getRegistryName().getPath());
         }
         compound.putInt("count", count);
     }

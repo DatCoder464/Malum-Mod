@@ -129,7 +129,7 @@ public class SpiritHelper {
 
 
     public static MalumSpiritType getSpiritType(String spirit) {
-        MalumSpiritType type = MalumRegistries.SPIRITS.getValue(MalumRegistries.SPIRITS.getRegistryName());
+        MalumSpiritType type = SpiritTypeRegistry.get(spirit);
         return type == null ? SpiritTypeRegistry.SACRED_SPIRIT.get() : type;
     }
 

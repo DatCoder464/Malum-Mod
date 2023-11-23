@@ -75,7 +75,7 @@ public class ColorEffectData {
                 boolean nonNullSpirit = colorRecord.spiritType != null;
                 buf.writeBoolean(nonNullSpirit);
                 if (nonNullSpirit) {
-                    buf.writeUtf(Objects.requireNonNull(colorRecord.spiritType.getRegistryName()).getNamespace());
+                    buf.writeUtf(colorRecord.spiritType.getRegistryName().getPath());
                 }
             }
         }

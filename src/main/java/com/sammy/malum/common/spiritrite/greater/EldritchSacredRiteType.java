@@ -51,7 +51,7 @@ public class EldritchSacredRiteType extends MalumRiteType {
                             state.randomTick((ServerLevel) level, p, level.random);
                         }
                         BlockPos particlePos = state.canOcclude() ? p : p.below();
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)), new SacredMistRiteEffectPacket(List.of(SACRED_SPIRIT.get().getRegistryName().getNamespace()), particlePos));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)), new SacredMistRiteEffectPacket(List.of(SACRED_SPIRIT.get().getRegistryName().getPath()), particlePos));
                     }
                 });
             }

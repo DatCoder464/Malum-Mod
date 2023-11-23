@@ -39,7 +39,7 @@ public class SpiritWithCount implements IRecipeComponent {
 
     public JsonObject serialize() {
         JsonObject object = new JsonObject();
-        object.addProperty("type", MalumRegistries.SPIRITS.getValue(MalumRegistries.MalumKeys.SPIRITS.getRegistryName()).toString());
+        object.addProperty("type", type.getRegistryName().getPath());
         if (getCount() > 1) {
             object.addProperty("count", getCount());
         }
@@ -50,7 +50,7 @@ public class SpiritWithCount implements IRecipeComponent {
     }
 
     public CompoundTag save(CompoundTag tag) {
-        tag.putString("type", MalumRegistries.SPIRITS.getValue(MalumRegistries.MalumKeys.SPIRITS.getRegistryName()).toString());
+        tag.putString("type", type.getRegistryName().getPath());
         tag.putInt("count", count);
         return tag;
     }

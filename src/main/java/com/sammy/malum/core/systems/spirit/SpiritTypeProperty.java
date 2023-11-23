@@ -17,14 +17,14 @@ public class SpiritTypeProperty extends Property<String> {
 
    public SpiritTypeProperty(String name, Collection<MalumSpiritType> types) {
       super(name, String.class);
-      this.values = ImmutableSet.copyOf(types.stream().map(s -> Objects.requireNonNull(s.getRegistryName()).getNamespace()).collect(Collectors.toList()));
+      this.values = ImmutableSet.copyOf(types.stream().map(s -> s.getRegistryName().getPath()).collect(Collectors.toList()));
 
       for (MalumSpiritType type : types) {
-         if (this.types.containsKey(Objects.requireNonNull(type.getRegistryName()).getNamespace())) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + type.getRegistryName().getNamespace() + "'");
+         if (this.types.containsKey(type.getRegistryName().getPath())) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + type.getRegistryName().getPath() + "'");
          }
 
-         this.types.put(type.getRegistryName().getNamespace(), type);
+         this.types.put(type.getRegistryName().getPath(), type);
       }
    }
 

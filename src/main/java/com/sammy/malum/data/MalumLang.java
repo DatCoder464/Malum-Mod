@@ -11,7 +11,6 @@ import com.sammy.malum.registry.MalumRegistries;
 import com.sammy.malum.registry.common.DamageSourceRegistry;
 import com.sammy.malum.registry.common.MobEffectRegistry;
 import com.sammy.malum.registry.common.SpiritRiteRegistry;
-import com.sammy.malum.registry.common.SpiritTypeRegistry;
 import com.sammy.malum.registry.common.block.BlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.sounds.SoundEvent;
@@ -109,7 +108,7 @@ public class MalumLang extends LanguageProvider {
             add("entity.malum." + e.get().getRegistryName().getPath(), name);
         });
 
-        spirits.forEach(s -> add(s.getSpiritDescription(), DataHelper.toTitleCase(s.getRegistryName().getNamespace() + "_spirit", "_")));
+        spirits.forEach(s -> add(s.getSpiritDescription(), DataHelper.toTitleCase(s.getRegistryName().getPath() + "_spirit", "_")));
 
         add("malum.gui.rite.type", "Type: ");
         add("malum.gui.rite.coverage", "Coverage: ");

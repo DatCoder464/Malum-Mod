@@ -41,7 +41,7 @@ public class MalumEntitySpiritData {
 
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag();
-        tag.putString("primaryType", primaryType.getRegistryName().getNamespace());
+        tag.putString("primaryType", primaryType.getRegistryName().getPath());
         tag.putInt("dataAmount", dataEntries.size());
         for (int i = 0; i < dataEntries.size(); i++) {
             CompoundTag dataTag = dataEntries.get(i).save(new CompoundTag());
