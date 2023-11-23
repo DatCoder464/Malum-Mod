@@ -1,6 +1,6 @@
 package com.sammy.malum.common.block.storage.jar;
 
-import com.sammy.malum.registry.MalumRegistries;
+
 import com.sammy.malum.visual_effects.SpiritLightSpecs;
 import com.sammy.malum.common.item.spirit.SpiritShardItem;
 import com.sammy.malum.common.item.curiosities.SpiritPouchItem;

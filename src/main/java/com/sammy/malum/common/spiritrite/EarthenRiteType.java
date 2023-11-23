@@ -8,12 +8,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE_SPIRIT;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.EARTHEN_SPIRIT;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.EARTHEN;
 
 public class EarthenRiteType extends MalumRiteType {
     public EarthenRiteType() {
-        super("earthen_rite", ARCANE_SPIRIT.get(), EARTHEN_SPIRIT.get(), EARTHEN_SPIRIT.get());
+        super("earthen_rite", ARCANE.get(), EARTHEN.get(), EARTHEN.get());
     }
 
     @Override
@@ -25,6 +25,7 @@ public class EarthenRiteType extends MalumRiteType {
     public MalumRiteEffect getCorruptedEffect() {
         return new PotionRiteEffect(LivingEntity.class, MobEffectRegistry.EARTHEN_MIGHT);
     }
+
 
     @Override
     public MalumRiteType setRegistryName(ResourceLocation name) {

@@ -8,12 +8,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.AQUEOUS_SPIRIT;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE_SPIRIT;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.AQUEOUS;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE;
 
 public class AqueousRiteType extends MalumRiteType {
     public AqueousRiteType() {
-        super("aqueous_rite", ARCANE_SPIRIT.get(), AQUEOUS_SPIRIT.get(), AQUEOUS_SPIRIT.get());
+        super("aqueous_rite", ARCANE.get(), AQUEOUS.get(), AQUEOUS.get());
     }
 
     @Override

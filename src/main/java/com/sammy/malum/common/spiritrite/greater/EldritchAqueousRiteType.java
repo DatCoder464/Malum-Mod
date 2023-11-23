@@ -20,7 +20,7 @@ import static com.sammy.malum.registry.common.SpiritTypeRegistry.*;
 
 public class EldritchAqueousRiteType extends MalumRiteType {
     public EldritchAqueousRiteType() {
-        super("greater_aqueous_rite", ELDRITCH_SPIRIT.get(), ARCANE_SPIRIT.get(), AQUEOUS_SPIRIT.get(), AQUEOUS_SPIRIT.get());
+        super("greater_aqueous_rite", ELDRITCH.get(), ARCANE.get(), AQUEOUS.get(), AQUEOUS.get());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class EldritchAqueousRiteType extends MalumRiteType {
                         for (int i = 0; i < 4 + level.random.nextInt(2); i++) {
                             level.getBlockState(p).randomTick((ServerLevel) level, p, level.random);
                         }
-                        ParticleEffectTypeRegistry.DRIPPING_SMOKE.createPositionedEffect(level, new PositionEffectData(p), new ColorEffectData(AQUEOUS_SPIRIT.get().getPrimaryColor()));
+                        ParticleEffectTypeRegistry.DRIPPING_SMOKE.createPositionedEffect(level, new PositionEffectData(p), new ColorEffectData(AQUEOUS.get().getPrimaryColor()));
                     }
                 });
             }
@@ -60,7 +60,7 @@ public class EldritchAqueousRiteType extends MalumRiteType {
                 getNearbyEntities(totemBase, Zombie.class).filter(z -> !(z instanceof Drowned)).forEach(e -> {
                     if (!e.isUnderWaterConverting()) {
                         e.startUnderWaterConversion(100);
-                        ParticleEffectTypeRegistry.HEXING_SMOKE.createEntityEffect(e, new ColorEffectData(AQUEOUS_SPIRIT.get().getPrimaryColor()));
+                        ParticleEffectTypeRegistry.HEXING_SMOKE.createEntityEffect(e, new ColorEffectData(AQUEOUS.get().getPrimaryColor()));
                     }
                 });
             }

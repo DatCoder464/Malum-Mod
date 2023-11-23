@@ -20,7 +20,7 @@ import static com.sammy.malum.registry.common.SpiritTypeRegistry.*;
 
 public class EldritchWickedRiteType extends MalumRiteType {
     public EldritchWickedRiteType() {
-        super("greater_wicked_rite", ELDRITCH_SPIRIT.get(), ARCANE_SPIRIT.get(), WICKED_SPIRIT.get(), WICKED_SPIRIT.get());
+        super("greater_wicked_rite", ELDRITCH.get(), ARCANE.get(), WICKED.get(), WICKED.get());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class EldritchWickedRiteType extends MalumRiteType {
                     animals.removeIf(Animal::isInLove);
                     for (Animal entity : animals) {
                         entity.hurt(DamageSourceRegistry.VOODOO, entity.getMaxHealth());
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(() -> entity), new MajorEntityEffectParticlePacket(WICKED_SPIRIT.get().getPrimaryColor(), entity.getX(), entity.getY() + entity.getBbHeight() / 2f, entity.getZ()));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(() -> entity), new MajorEntityEffectParticlePacket(WICKED.get().getPrimaryColor(), entity.getX(), entity.getY() + entity.getBbHeight() / 2f, entity.getZ()));
                         if (maxKills-- <= 0) {
                             return;
                         }

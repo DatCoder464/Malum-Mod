@@ -3,7 +3,6 @@ package com.sammy.malum.core.systems.spirit;
 import com.sammy.malum.*;
 import com.sammy.malum.common.block.mana_mote.*;
 import com.sammy.malum.common.item.spirit.*;
-import com.sammy.malum.registry.MalumRegistries;
 import com.sammy.malum.registry.common.*;
 import com.sammy.malum.registry.common.block.*;
 import net.minecraft.*;
@@ -25,9 +24,7 @@ import team.lodestar.lodestone.systems.particle.data.color.*;
 import java.awt.*;
 import java.util.function.*;
 
-import static com.sammy.malum.MalumMod.MALUM;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.SACRED_SPIRIT;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.SPIRITS;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.SACRED;
 
 
 public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
@@ -137,7 +134,7 @@ public class MalumSpiritType implements IForgeRegistryEntry<MalumSpiritType> {
 
     @Override
     public MalumSpiritType setRegistryName(ResourceLocation name) {
-        return SACRED_SPIRIT.get();
+        return SACRED.get();
     }
 
     @Nullable

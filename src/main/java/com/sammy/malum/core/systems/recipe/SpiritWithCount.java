@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.sammy.malum.common.item.spirit.SpiritShardItem;
 import com.sammy.malum.core.helper.SpiritHelper;
 import com.sammy.malum.core.systems.spirit.MalumSpiritType;
-import com.sammy.malum.registry.MalumRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;

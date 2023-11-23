@@ -5,7 +5,6 @@ import com.sammy.malum.common.block.curiosities.weeping_well.*;
 import com.sammy.malum.common.block.ether.*;
 import com.sammy.malum.core.systems.spirit.*;
 import com.sammy.malum.data.item.*;
-import com.sammy.malum.registry.MalumRegistries;
 import com.sammy.malum.registry.common.*;
 import net.minecraft.resources.*;
 import net.minecraft.world.level.block.*;

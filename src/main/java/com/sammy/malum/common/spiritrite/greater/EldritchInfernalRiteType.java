@@ -22,7 +22,7 @@ import static com.sammy.malum.registry.common.SpiritTypeRegistry.*;
 
 public class EldritchInfernalRiteType extends MalumRiteType {
     public EldritchInfernalRiteType() {
-        super("greater_infernal_rite", ELDRITCH_SPIRIT.get(), ARCANE_SPIRIT.get(), INFERNAL_SPIRIT.get(), INFERNAL_SPIRIT.get());
+        super("greater_infernal_rite", ELDRITCH.get(), ARCANE.get(), INFERNAL.get(), INFERNAL.get());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class EldritchInfernalRiteType extends MalumRiteType {
                             BlockState newState = block.defaultBlockState();
                             level.setBlockAndUpdate(p, newState);
                             level.levelEvent(2001, p, Block.getId(newState));
-                            MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(INFERNAL_SPIRIT.get().getPrimaryColor(), p));
+                            MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(INFERNAL.get().getPrimaryColor(), p));
                         }
                     }
                 });

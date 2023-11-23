@@ -3,6 +3,7 @@ package com.sammy.malum.core.systems.spirit;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Collection;
 import java.util.Map;
@@ -15,16 +16,16 @@ public class SpiritTypeProperty extends Property<String> {
    private final ImmutableSet<String> values;
    private final Map<String, MalumSpiritType> types = Maps.newHashMap();
 
-   public SpiritTypeProperty(String name, Collection<MalumSpiritType> types) {
+   public SpiritTypeProperty(String name, Collection<RegistryObject<MalumSpiritType>> types) {
       super(name, String.class);
-      this.values = ImmutableSet.copyOf(types.stream().map(s -> s.getRegistryName().getPath()).collect(Collectors.toList()));
+      this.values = ImmutableSet.copyOf(types.stream().map(s -> s.get().getRegistryName().getPath()).collect(Collectors.toList()));
 
-      for (MalumSpiritType type : types) {
-         if (this.types.containsKey(type.getRegistryName().getPath())) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + type.getRegistryName().getPath() + "'");
+      for (RegistryObject<MalumSpiritType> type : types) {
+         if (this.types.containsKey(type.get().getRegistryName().getPath())) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + type.get().getRegistryName().getPath() + "'");
          }
 
-         this.types.put(type.getRegistryName().getPath(), type);
+         this.types.put(type.get().getRegistryName().getPath(), type.get());
       }
    }
 

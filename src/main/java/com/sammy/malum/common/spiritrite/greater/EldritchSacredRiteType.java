@@ -22,7 +22,7 @@ import static com.sammy.malum.registry.common.SpiritTypeRegistry.*;
 
 public class EldritchSacredRiteType extends MalumRiteType {
     public EldritchSacredRiteType() {
-        super("greater_sacred_rite", ELDRITCH_SPIRIT.get(), ARCANE_SPIRIT.get(), SACRED_SPIRIT.get(), SACRED_SPIRIT.get());
+        super("greater_sacred_rite", ELDRITCH.get(), ARCANE.get(), SACRED.get(), SACRED.get());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class EldritchSacredRiteType extends MalumRiteType {
                             state.randomTick((ServerLevel) level, p, level.random);
                         }
                         BlockPos particlePos = state.canOcclude() ? p : p.below();
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)), new SacredMistRiteEffectPacket(List.of(SACRED_SPIRIT.get().getRegistryName().getPath()), particlePos));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)), new SacredMistRiteEffectPacket(List.of(SACRED.get().getRegistryName().getPath()), particlePos));
                     }
                 });
             }
@@ -75,7 +75,7 @@ public class EldritchSacredRiteType extends MalumRiteType {
                     animals.forEach(e -> {
                         if (level.random.nextFloat() <= 0.01f) {
                             e.setInLoveTime(600);
-                            MALUM_CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(() -> e), new MajorEntityEffectParticlePacket(SACRED_SPIRIT.get().getPrimaryColor(), e.getX(), e.getY() + e.getBbHeight() / 2f, e.getZ()));
+                            MALUM_CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(() -> e), new MajorEntityEffectParticlePacket(SACRED.get().getPrimaryColor(), e.getX(), e.getY() + e.getBbHeight() / 2f, e.getZ()));
                         }
                     });
                 }

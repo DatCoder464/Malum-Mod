@@ -8,12 +8,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.Nullable;
 
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.AERIAL_SPIRIT;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE_SPIRIT;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.AERIAL;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE;
 
 public class AerialRiteType extends MalumRiteType {
     public AerialRiteType() {
-        super("aerial_rite", ARCANE_SPIRIT.get(), AERIAL_SPIRIT.get(), AERIAL_SPIRIT.get());
+        super("aerial_rite", ARCANE.get(), AERIAL.get(), AERIAL.get());
     }
 
     @Override

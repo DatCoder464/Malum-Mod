@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class MalumEntitySpiritData {
     public static final String SOUL_DATA = "soul_data";
-    public static final MalumEntitySpiritData EMPTY = new MalumEntitySpiritData(SpiritTypeRegistry.SACRED_SPIRIT.get(), new ArrayList<>(), null);
+    public static final MalumEntitySpiritData EMPTY = new MalumEntitySpiritData(SpiritTypeRegistry.SACRED.get(), new ArrayList<>(), null);
     public final MalumSpiritType primaryType;
     public final int totalSpirits;
     public final List<SpiritWithCount> dataEntries;

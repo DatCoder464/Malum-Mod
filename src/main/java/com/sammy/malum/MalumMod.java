@@ -11,8 +11,6 @@ import com.sammy.malum.data.recipe.*;
 import net.minecraft.data.*;
 import net.minecraft.data.tags.*;
 import net.minecraft.resources.*;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.*;
 import net.minecraftforge.fml.common.*;
@@ -22,15 +20,14 @@ import net.minecraftforge.forge.event.lifecycle.*;
 import org.apache.logging.log4j.*;
 
 import java.util.*;
-import java.util.function.*;
 
 import static com.sammy.malum.registry.client.ParticleRegistry.*;
 import static com.sammy.malum.registry.common.AttributeRegistry.*;
 import static com.sammy.malum.registry.common.ContainerRegistry.*;
 import static com.sammy.malum.registry.common.MobEffectRegistry.*;
 import static com.sammy.malum.registry.common.SoundRegistry.*;
-import static com.sammy.malum.registry.common.SpiritRiteRegistry.RITES;
-//import static com.sammy.malum.registry.common.SpiritTypeRegistry.SPIRITS;
+import static com.sammy.malum.registry.common.SpiritRiteRegistry.*;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.*;
 import static com.sammy.malum.registry.common.block.BlockEntityRegistry.*;
 import static com.sammy.malum.registry.common.block.BlockRegistry.*;
 import static com.sammy.malum.registry.common.entity.EntityRegistry.*;
@@ -53,6 +50,8 @@ public class MalumMod {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 
+        SPIRITS.register(modBus);
+        RITES.register(modBus);
         ENCHANTMENTS.register(modBus);
         BLOCKS.register(modBus);
         BLOCK_ENTITY_TYPES.register(modBus);
@@ -66,8 +65,6 @@ public class MalumMod {
         RECIPE_TYPES.register(modBus);
         RECIPE_SERIALIZERS.register(modBus);
         FEATURE_TYPES.register(modBus);
- //       SPIRITS.register(modBus);
- //       RITES.register(modBus);
 
         TetraCompat.init();
         FarmersDelightCompat.init();

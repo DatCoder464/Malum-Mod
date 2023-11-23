@@ -24,7 +24,7 @@ import static com.sammy.malum.registry.common.PacketRegistry.MALUM_CHANNEL;
 
 public class EldritchEarthenRiteType extends MalumRiteType {
     public EldritchEarthenRiteType() {
-        super("greater_earthen_rite", ELDRITCH_SPIRIT.get(), ARCANE_SPIRIT.get(), EARTHEN_SPIRIT.get(), EARTHEN_SPIRIT.get());
+        super("greater_earthen_rite", ELDRITCH.get(), ARCANE.get(), EARTHEN.get(), EARTHEN.get());
     }
 
     @Override
@@ -42,7 +42,7 @@ public class EldritchEarthenRiteType extends MalumRiteType {
                         if (state.getBlock() instanceof InfestedBlock infestedBlock && level instanceof ServerLevel serverLevel) {
                             infestedBlock.spawnAfterBreak(state, serverLevel, p, ItemStack.EMPTY);
                         }
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(EARTHEN_SPIRIT.get().getPrimaryColor(), p));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(EARTHEN.get().getPrimaryColor(), p));
                     }
                 });
             }
@@ -68,7 +68,7 @@ public class EldritchEarthenRiteType extends MalumRiteType {
                         BlockState cobblestone = Blocks.COBBLESTONE.defaultBlockState();
                         level.setBlockAndUpdate(p, cobblestone);
                         level.levelEvent(2001, p, Block.getId(cobblestone));
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(EARTHEN_SPIRIT.get().getPrimaryColor(), p));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(EARTHEN.get().getPrimaryColor(), p));
                     }
                 });
             }

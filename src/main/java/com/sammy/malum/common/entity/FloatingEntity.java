@@ -1,7 +1,6 @@
 package com.sammy.malum.common.entity;
 
 import com.sammy.malum.core.systems.spirit.*;
-import com.sammy.malum.registry.MalumRegistries;
 import com.sammy.malum.registry.common.SpiritTypeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -36,7 +35,7 @@ public abstract class FloatingEntity extends Entity {
 
     protected static final EntityDataAccessor<String> DATA_SPIRIT = SynchedEntityData.defineId(FloatingEntity.class, EntityDataSerializers.STRING);
     public final TrailPointBuilder trailPointBuilder = TrailPointBuilder.create(10);
-    protected MalumSpiritType spiritType = SpiritTypeRegistry.ARCANE_SPIRIT.get();
+    protected MalumSpiritType spiritType = SpiritTypeRegistry.ARCANE.get();
     public int maxAge;
     public int age;
     public float moveTime;
@@ -71,7 +70,7 @@ public abstract class FloatingEntity extends Entity {
 
     @Override
     protected void defineSynchedData() {
-        this.getEntityData().define(DATA_SPIRIT, SpiritTypeRegistry.ARCANE_SPIRIT.get().toString());
+        this.getEntityData().define(DATA_SPIRIT, SpiritTypeRegistry.ARCANE.get().toString());
     }
 
     @Override

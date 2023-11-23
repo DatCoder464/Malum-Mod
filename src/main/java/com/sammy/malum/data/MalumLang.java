@@ -7,10 +7,10 @@ import com.sammy.malum.common.item.spirit.SpiritJarItem;
 import com.sammy.malum.core.systems.item.ISoulContainerItem;
 import com.sammy.malum.core.systems.rites.*;
 import com.sammy.malum.core.systems.spirit.MalumSpiritType;
-import com.sammy.malum.registry.MalumRegistries;
 import com.sammy.malum.registry.common.DamageSourceRegistry;
 import com.sammy.malum.registry.common.MobEffectRegistry;
 import com.sammy.malum.registry.common.SpiritRiteRegistry;
+import com.sammy.malum.registry.common.SpiritTypeRegistry;
 import com.sammy.malum.registry.common.block.BlockRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.sounds.SoundEvent;
@@ -54,7 +54,7 @@ public class MalumLang extends LanguageProvider {
         Set<RegistryObject<MobEffect>> effects = new HashSet<>(EFFECTS.getEntries());
         Set<RegistryObject<Attribute>> attributes = new HashSet<>(ATTRIBUTES.getEntries());
         Set<RegistryObject<EntityType<?>>> entities = new HashSet<>(ENTITY_TYPES.getEntries());
-        List<MalumSpiritType> spirits = MalumRegistries.SPIRITS.getValues().stream().toList();
+        List<MalumSpiritType> spirits = SpiritTypeRegistry.getValues();
 
         add(DataHelper.take(blocks, BlockRegistry.PRIMORDIAL_SOUP).get(), "The Weeping Well");
         add(DataHelper.take(blocks, BlockRegistry.VOID_CONDUIT).get(), "The Weeping Well");

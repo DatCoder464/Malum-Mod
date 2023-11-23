@@ -21,13 +21,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE_SPIRIT;
-import static com.sammy.malum.registry.common.SpiritTypeRegistry.INFERNAL_SPIRIT;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.ARCANE;
+import static com.sammy.malum.registry.common.SpiritTypeRegistry.INFERNAL;
 import static com.sammy.malum.registry.common.PacketRegistry.MALUM_CHANNEL;
 
 public class InfernalRiteType extends MalumRiteType {
     public InfernalRiteType() {
-        super("infernal_rite", ARCANE_SPIRIT.get(), INFERNAL_SPIRIT.get(), INFERNAL_SPIRIT.get());
+        super("infernal_rite", ARCANE.get(), INFERNAL.get(), INFERNAL.get());
     }
 
     @Override
@@ -57,8 +57,8 @@ public class InfernalRiteType extends MalumRiteType {
                     if (!state.is(BlockTagRegistry.ENDLESS_FLAME)) {
                         level.playSound(null, p, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
 
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new InfernalExtinguishRiteEffectPacket(INFERNAL_SPIRIT.get().getPrimaryColor(), p));
-                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(ARCANE_SPIRIT.get().getPrimaryColor(), p));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new InfernalExtinguishRiteEffectPacket(INFERNAL.get().getPrimaryColor(), p));
+                        MALUM_CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p)), new BlockSparkleParticlePacket(ARCANE.get().getPrimaryColor(), p));
                         totemBase.getLevel().removeBlock(p, false);
                     }
                 });
